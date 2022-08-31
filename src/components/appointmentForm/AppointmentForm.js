@@ -12,7 +12,8 @@ export const AppointmentForm = ({
   setDate,
   time,
   setTime,
-  handleSubmit
+  handleSubmit,
+  alert,
 }) => {
   const getTodayString = () => {
     const [month, day, year] = new Date()
@@ -68,8 +69,8 @@ export const AppointmentForm = ({
           required
         />
       </label>
-      <br />
-      <input type="submit" value="Add Appointment" />
+      <button type="submit" disabled={alert ? true : false} >Add Appointment</button> 
+      <h2 className="alert">{alert}</h2>
     </form>
   );
 };
