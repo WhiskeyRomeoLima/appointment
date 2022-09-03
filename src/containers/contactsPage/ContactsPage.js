@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import ContactForm from "../../components/contactForm/ContactForm";
 import TileList from "../../components/tileList/TileList";
 
-const ContactsPage = (props) => {
-  const [newName, setCurrentName] = useState('');
-  const [newPhone, setCurrentPhone] = useState('');
-  const [newEmail, setCurrentEmail] = useState('');
+const ContactsPage = ({contacts, addContact}) => {
+  const [newName, setNewName] = useState('');
+  const [newPhone, setNewPhone] = useState('');
+  const [newEmail, setNewEmail] = useState('');
   const [duplicate, setDuplicate] = useState(false);
   const [alert, setAlert] = useState('');
 
@@ -13,17 +13,17 @@ const ContactsPage = (props) => {
     e.preventDefault();
 
     if (!duplicate) {
-      props.addContact(newName, newPhone, newEmail);
-      setCurrentName('');
-      setCurrentPhone('');
-      setCurrentEmail('');
+      addContact(newName, newPhone, newEmail);
+      setNewName('');
+      setNewPhone('');
+      setNewEmail('');
     }
 
   };
 
   useEffect(() => {
   
-    for(const contactItem of props.contacts) {
+    for(const contactItem of contacts) {
       if (contactItem.name === newName) {
         if (!duplicate) {
           setDuplicate(true);
@@ -37,18 +37,18 @@ const ContactsPage = (props) => {
       }
     }
 
-  }, [props.contacts, newName, duplicate]);
+  }, [contacts, newName, duplicate]);
 
   return (
     <div>
       <section>
         <h2>Add Contact</h2> 
         <ContactForm name={newName} 
-                     setName={setCurrentName} 
+                     setName={setNewName} 
                      phone={newPhone}
-                     setPhone={setCurrentPhone}
+                     setPhone={setNewPhone}
                      email={newEmail}
-                     setEmail={setCurrentEmail}
+                     setEmail={setNewEmail}
                      handleSubmit={handleSubmit}
                      alert={alert} />
         
@@ -56,7 +56,7 @@ const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList tiles={props.contacts} />
+        <TileList tiles={contacts} />
       </section>
     </div>
   );

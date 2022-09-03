@@ -9,6 +9,7 @@ Implemented as follows:
 
 \<App/\> renders navigation links and provides routing functionality.
   The navigation bar has two links (Contacts and Appointment) 
+    add state variables for contacts, appointments
 
 The structure of the application consists of 
 \<App /\> which renders a navbar at top of page consisting of

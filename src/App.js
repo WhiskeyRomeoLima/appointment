@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate, Link, NavLink, useLocation } from 'react-router-dom';
+// @ts-ignore
+import { Routes, Route, Navigate, NavLink, } from 'react-router-dom';
 //using react@18.2.0, react-router-dom@6.3.0
 //Routes instead of Switch
 //Navigate instead of Redirect
